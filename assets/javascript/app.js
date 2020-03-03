@@ -21,15 +21,17 @@ var ans3= ["whale shark" , "sunfish" , "lionfish" , "giant squid"];
 var ans4= ["crab" , "cod" , "shrimp" , "salmon"];
 
 
-//event listeners
+//show question and answers options
 function showQuestion(){
-    $('#question1').html(ques1[0]);
+    $('#question1').html(ques1);
     
 }
 
 
-//
-
+//click listener
+$("button").click(function(){
+    $("#question1").html(ques1);
+});
 //if correct answer is picked
 
 
@@ -46,19 +48,7 @@ function showQuestion(){
 
 
 //timer
-function startTime() {
-    clearInterval(time);
-    time = setInterval(displayTime, 1000);
-}
-function stopTime() {
-    clearInterval(time);
-    resetTime();
-    if (count < question.length - 1) {
-        setTimeout(startTime, 2000);
-        setTimeout(displayQuestion, 3000);
-    }
-}
-resetTime();
+
 
 
 

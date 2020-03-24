@@ -38,38 +38,50 @@ var unanswered = 0;
     var num = i+1;
     $(".question"+ num).text(questions[i].ques);
     // Print all the buttons
-    printBtn(i);
+    
    
     }
 
 
 
 //how do i make the buttons show up under the question?
-function printBtn(i) {
-for (var j = 0; j < questions[i].ans.length; j++) {
-    var btn = document.createElement("button");
-    var t = document.createTextNode( questions[i].ans[j]);
+function printBtns(num) {
+for (var i = 0 ; i < questions[num -1].ans.length; i++) {
+    var btn = $("<button class='answerBtn'></button>");
+    var t = $('<p></p>')
+    t.text (questions[num -1].ans[i]);
     btn.append(t);
     btn.addClass("notChecked");
-    btn.attr("checked", false);
-    var num = j+1;
+    btn.attr("btn.checked", false);
+    //var num = i+1;
     $(".answer"+num).append(btn);
     }
+
 }
+
+printBtns(1);
+printBtns(2);
+printBtns(3);
+printBtns(4);
 
 
 
   //if correct answer is picked
   //var htmlBtn = "<btn class="notChecked" checked=false></btn>";
-  $(document).on("click","btn",function(){
-      var currentClicked = $(this).attr("checked");
-      $(this).attr("checked",!currentClicked);
+  $(document).on("click",".answerBtn",function(){
+
+    //may need boolean on 74
+    var currentClicked = $(this).attr("btn.checked");
+    $(this).attr("btn.checked",!currentClicked);
+    console.log(currentClicked)
   });
-
+//swap classes for styling (conditionally) w/jquery
   //if wrong answer is picked
+$(".submit").on("click", function(){
+  console.log('submit button clicked')
+})
 
-  //timer
-
+//timer functions
 function run() {
     clearInterval(timerId);
     timerId = setInterval(decrement, 1000);
